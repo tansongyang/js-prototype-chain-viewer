@@ -3,3 +3,26 @@
     width: 320px;
     height: 320px;
 }
+
+#object {
+	background-color: lime;
+	font-weight: bold;
+}
+
+.prototype-object {
+	background-color: mediumturquoise;
+}
+
+.constructor-prototype {
+	font-weight: bold;
+}
+
+.constructor {
+	background-color: firebrick;
+}
+
+#object-prototype {
+	background-color: black;
+	color: white;
+	font-weight: bold;
+}
