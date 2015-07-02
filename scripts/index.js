@@ -2,11 +2,11 @@
 	"use strict";
 
 	var sampleCode = "function Foo(id) { this.id = id };" +
-		"var foo = new Foo('foo');" +
-		"var bar = Object.create(foo);" +
-		"bar.id = 'bar';" +
-		"exports.object = bar;" +
-		"exports.constructors = [Foo];";
+		"\r\nvar foo = new Foo('foo');" +
+		"\r\nvar bar = Object.create(foo);" +
+		"\r\nbar.id = 'bar';" +
+		"\r\nexports.object = bar;" +
+		"\r\nexports.constructors = [Foo];";
 	var codeArea, outputContent;
 
 	document.addEventListener("DOMContentLoaded", function() {
@@ -14,6 +14,9 @@
 		outputContent = document.getElementById("output-content");
 
 		document.getElementById("run").addEventListener("click", function() {
+			if (!codeArea.value) {
+				codeArea.value = sampleCode;
+			}
 			var exports = parseJS(codeArea.value || sampleCode);
 			display(exports);
 		});
