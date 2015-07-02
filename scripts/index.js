@@ -31,7 +31,7 @@
 	}
 
 	function display(exports) {
-		var prototype, constructor, nodes;
+		var prototype, constructor, nodes, i;
 
 		// Predicate for checking if prototype is a constructor prototype
 		function prototypeIsContructorPrototype(constructor) {
@@ -63,6 +63,17 @@
 				appendPrototypeNode(prototype.id, ["prototype"]);
 			}
 		}
+
+		// Display all nodes; temporary hack using setTimeout and hardcoded delay
+		nodes = document.querySelectorAll(".output-div");
+		i = 0;
+		setTimeout(function removeHidden() {
+			if (i < nodes.length) {
+				nodes[i].classList.remove("is-hidden");
+				i++;
+				setTimeout(removeHidden, 200);
+			}
+		}, 200);
 	}
 
 	function appendPrototypeNode(text, classList, id, isConstructor) {
@@ -93,6 +104,7 @@
 			div.innerHTML = '<span class="output-div-text">' + text + "</span>";
 		}
 		div.classList.add("output-div");
+		div.classList.add("is-hidden");
 		if (classList && classList.length >= 0) {
 			for (i = 0; i < classList.length; i++) {
 				div.classList.add(classList[i]);

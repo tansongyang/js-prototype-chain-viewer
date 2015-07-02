@@ -79,9 +79,19 @@
 }
 
 .output-div {
-	transform: scale(0.9);
+	visibility: visible;
+	opacity: 1;
 	background-color: #49483e;
-	transition: transform 0.2s ease-in-out;
+	transform: scale(0.9);
+	transition: visibility 0.2s ease-in-out,
+		opacity 0.2s ease-in-out,
+		transform 0.2s ease-in-out;
+}
+
+.output-div.is-hidden {
+	visibility: hidden;
+	opacity: 0;
+	transform: translateX(calc(-100%));
 }
 
 .output-div.is-active {
