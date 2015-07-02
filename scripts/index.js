@@ -31,7 +31,7 @@
 	function display(exports) {
 		var prototype, constructor;
 
-		// Predicate for checking
+		// Predicate for checking if prototype is a constructor prototype
 		function prototypeIsContructorPrototype(constructor) {
 			return prototype === constructor.prototype;
 		}
@@ -41,26 +41,28 @@
 			outputContent.removeChild(outputContent.firstChild);
 		}
 
-		// Append base object
-		appendDivToOutput(exports.object.id, [], "object");
+		// Append root object
+		appendDivToOutput(exports.object.id, ["prototype"], "root-object");
 
 		// Walk prototype chain
-		for (prototype = Object.getPrototypeOf(exports.object); prototype; prototype = Object.getPrototypeOf(prototype)) {
-			if (prototype.id) {
-				// For now, assume users will give objects an id attribute
-				appendDivToOutput(prototype.id, ["prototype-object"]);
-				continue;
+		for (prototype = Object.getPrototypeOf(exports.object);
+			prototype;
+			prototype = Object.getPrototypeOf(prototype)) {
+
+			if (prototype === Object.prototype) {
+				// Reached the end, which is Object.prototype
+				appendDivToOutput("Object.prototype", ["prototype"], "object-prototype");
+				break;
 			}
 
 			constructor = exports.constructors.filter(prototypeIsContructorPrototype)[0];
 			if (constructor) {
-				appendDivToOutput("(" + constructor + ").prototype", ["constructor", "constructor-prototype"]);
-				appendDivToOutput(constructor, ["constructor"]);
-				continue;
-			}
-
-			if (prototype === Object.prototype) {
-				appendDivToOutput("Object.prototype", [], "object-prototype");
+				// This prototype is a constructor's prototype
+				appendDivToOutput(constructor.name + ".prototype", ["prototype", "constructor-prototype"]);
+				appendDivToOutput(constructor.name, ["constructor"]);
+			} else {
+				// This prototype is just an object
+				appendDivToOutput(prototype.id, ["prototype"]);
 			}
 		}
 	}

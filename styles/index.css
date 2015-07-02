@@ -36,28 +36,28 @@
 
 #run::before {
 	content: "\25b6 ";
-	color: #a6e22c;
+	color: #a6e22e;
 }
 
 #run:hover {
-	background-color: #4b4b4b;
+	background-color: #49483e;
 	cursor: pointer;
 }
 
 #run:active {
 	/* Wish I didn't have to use !important; why won't active replace focus? */
-	background-color: black !important;
+	background-color: #75715e !important;
 }
 
 #run:focus {
-	background-color: #4b4b4b;
+	background-color: #49483e;
 	outline: 0;
 }
 
 /* Code area */
 #code-wrapper {
-	border-top: 2px solid #4b4b4b;
-	border-bottom: 2px solid #4b4b4b;
+	border-top: 2px solid #49483e;
+	border-bottom: 2px solid #49483e;
 }
 
 #code {
@@ -78,25 +78,30 @@
 	margin: 0 auto;
 }
 
-#object {
-	background-color: lime;
+.prototype {
+	width: 64px;
+	height: 64px;
+	border-radius: 32px;
+	background-color: #66d9ef;
+	text-align: center;
+	white-space: nowrap;
+}
+
+#root-object {
+	background-color: #a6e22e;
 	font-weight: bold;
 }
 
-.prototype-object {
-	background-color: mediumturquoise;
-}
-
 .constructor-prototype {
+	background-color: #f92672;
 	font-weight: bold;
 }
 
 .constructor {
-	background-color: firebrick;
+	background-color: #e6db74;
 }
 
 #object-prototype {
-	background-color: black;
-	color: white;
+	background-color: #fd971f;
 	font-weight: bold;
 }
