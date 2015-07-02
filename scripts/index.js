@@ -17,6 +17,8 @@
 			var exports = parseJS(codeArea.value || sampleCode);
 			display(exports);
 		});
+
+		document.getElementById("code-wrapper").classList.remove("is-uninitialized");
 	});
 
 	function parseJS(text) {
@@ -29,7 +31,7 @@
 	}
 
 	function display(exports) {
-		var prototype, constructor;
+		var prototype, constructor, nodes;
 
 		// Predicate for checking if prototype is a constructor prototype
 		function prototypeIsContructorPrototype(constructor) {
@@ -45,10 +47,7 @@
 		appendPrototypeNode(exports.object.id, ["prototype"], "root-object");
 
 		// Walk prototype chain
-		for (prototype = Object.getPrototypeOf(exports.object);
-			prototype;
-			prototype = Object.getPrototypeOf(prototype)) {
-
+		for (prototype = Object.getPrototypeOf(exports.object); prototype; prototype = Object.getPrototypeOf(prototype)) {
 			if (prototype === Object.prototype) {
 				// Reached the end, which is Object.prototype
 				appendPrototypeNode("Object.prototype", ["prototype"], "object-prototype");
@@ -102,6 +101,14 @@
 		if (id) {
 			div.id = id;
 		}
+
+		div.addEventListener("click", function() {
+			if (div.classList.contains("is-active")) {
+				div.classList.remove("is-active");
+			} else {
+				div.classList.add("is-active");
+			}
+		});
 
 		return div;
 	}
