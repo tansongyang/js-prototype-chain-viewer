@@ -7,11 +7,11 @@
 		"bar.id = 'bar';" +
 		"exports.object = bar;" +
 		"exports.constructors = [Foo];";
-	var codeArea, output;
+	var codeArea, outputContent;
 
 	document.addEventListener("DOMContentLoaded", function() {
 		codeArea = document.getElementById("code");
-		output = document.getElementById("output");
+		outputContent = document.getElementById("output-content");
 
 		document.getElementById("run").addEventListener("click", function() {
 			var exports = parseJS(codeArea.value || sampleCode);
@@ -37,8 +37,8 @@
 		}
 
 		// Clear original
-		while (output.firstChild) {
-			output.removeChild(output.firstChild);
+		while (outputContent.firstChild) {
+			outputContent.removeChild(outputContent.firstChild);
 		}
 
 		// Append base object
@@ -80,6 +80,6 @@
 		if (id) {
 			div.id = id;
 		}
-		output.appendChild(div);
+		outputContent.appendChild(div);
 	}
 })();

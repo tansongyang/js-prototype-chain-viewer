@@ -1,7 +1,81 @@
-#code {
+/*
+ * Resets/base rules
+ */
+* {
+	padding: 0;
+	border: 0;
+	margin: 0;
+	background: #272822;
+	color: #f8f8f2;
+	font-size: 16px;
+	font-family: Consolas, monospace;
+}
+
+/*
+ * Layouts
+ */
+.half-column {
+	position: relative;
+	float: left;
+	width: 50%;
+	min-width: 640px;
+	box-sizing: border-box;
+}
+
+/*
+ *Modules
+ */
+/* Run button */
+#run {
 	display: block;
-    width: 320px;
-    height: 320px;
+	width: 64px;
+	height: 32px;
+	font-size: large;
+	text-transform: uppercase;
+}
+
+#run::before {
+	content: "\25b6 ";
+	color: #a6e22c;
+}
+
+#run:hover {
+	background-color: #4b4b4b;
+	cursor: pointer;
+}
+
+#run:active {
+	/* Wish I didn't have to use !important; why won't active replace focus? */
+	background-color: black !important;
+}
+
+#run:focus {
+	background-color: #4b4b4b;
+	outline: 0;
+}
+
+/* Code area */
+#code-wrapper {
+	border-top: 2px solid #4b4b4b;
+	border-bottom: 2px solid #4b4b4b;
+}
+
+#code {
+	width: 100%;
+	min-height: 640px;
+	padding: 8px 16px;
+	resize: none;
+}
+
+#code:focus {
+	outline: 0;
+}
+
+/* Output content */
+#output-content {
+	width: 576px; /* 640 (min-width of parent) - 64 */
+	padding: 32px 0;
+	margin: 0 auto;
 }
 
 #object {

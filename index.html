@@ -7,8 +7,16 @@
 	<script type="text/javascript" src="scripts/index.js"></script>
 </head>
 <body>
-	<div id="output"></div>
-	<button id="run">Run</button>
-	<textarea id="code"></textarea>
+	<div id="editor" class="half-column">
+		<div id="menu-bar">
+			<button id="run">Run</button>
+		</div>
+		<div id="code-wrapper">
+			<textarea id="code" autofocus></textarea>
+		</div>
+	</div>
+	<div id="output" class="half-column">
+		<div id="output-content"></div>
+	</div>
 </body>
 </html>
