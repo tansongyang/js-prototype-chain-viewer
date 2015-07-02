@@ -14,10 +14,14 @@
 		outputContent = document.getElementById("output-content");
 
 		document.getElementById("run").addEventListener("click", function() {
-			if (!codeArea.value) {
-				codeArea.value = sampleCode;
-			}
+			codeArea.value = codeArea.value || sampleCode;
 			var exports = parseJS(codeArea.value || sampleCode);
+
+			exports.constructors = exports.constructors || [];
+			exports.constructors = exports.constructors.concat([
+				Function
+			]); // Include fundamental objects
+
 			display(exports);
 		});
 
