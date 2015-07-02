@@ -5,7 +5,7 @@
 	padding: 0;
 	border: 0;
 	margin: 0;
-	background: #272822;
+	background-color: #272822;
 	color: #f8f8f2;
 	font-size: 16px;
 	font-family: Consolas, monospace;
@@ -78,30 +78,64 @@
 	margin: 0 auto;
 }
 
+.output-div {
+	background-color: #49483e;
+}
+
+.output-div-text {
+	/* Temporary hack to vertically center text */
+	position: relative;
+	top: 40%;
+	background-color: rgba(0, 0, 0, 0);
+	color: inherit;
+	vertical-align: middle;
+}
+
 .prototype {
-	width: 64px;
-	height: 64px;
-	border-radius: 32px;
-	background-color: #66d9ef;
+	width: 160px;
+	height: 160px;
+	border-radius: 80px;
+	color: #66d9ef;
 	text-align: center;
 	white-space: nowrap;
 }
 
 #root-object {
-	background-color: #a6e22e;
+	color: #a6e22e;
 	font-weight: bold;
 }
 
+.constructor-prototype-wrapper {
+	height: 160px; /* So it takes up the same height */
+	background-color: #272822;
+}
+
+.constructor-prototype-wrapper::after {
+	/* Clear because internal divs use float */
+	content: ".";
+	visibility: hidden;
+	display: "block";
+	height: 0;
+	clear: both;
+}
+
 .constructor-prototype {
-	background-color: #f92672;
+	float: left;
+	color: #e6db74;
 	font-weight: bold;
 }
 
 .constructor {
-	background-color: #e6db74;
+	float: left;
+	width: 80px;
+	height: 80px;
+	border-radius: 40px;
+	text-align: center;
+	white-space: nowrap;
+	color: #fd971f;
 }
 
 #object-prototype {
-	background-color: #fd971f;
+	color: #f92672;
 	font-weight: bold;
 }
