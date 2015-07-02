@@ -29,7 +29,7 @@
 	}
 
 	function display(exports) {
-		var div, prototype, constructor;
+		var prototype, constructor;
 
 		// Predicate for checking
 		function prototypeIsContructorPrototype(constructor) {
@@ -42,44 +42,44 @@
 		}
 
 		// Append base object
-		div = document.createElement("div");
-		div.id = "object";
-		div.innerHTML = exports.object.id;
-		output.appendChild(div);
+		appendDivToOutput(exports.object.id, [], "object");
 
 		// Walk prototype chain
 		for (prototype = Object.getPrototypeOf(exports.object); prototype; prototype = Object.getPrototypeOf(prototype)) {
 			if (prototype.id) {
 				// For now, assume users will give objects an id attribute
-				div = document.createElement("div");
-				div.classList.add("prototype-object");
-				div.innerHTML = prototype.id;
-				output.appendChild(div);
+				appendDivToOutput(prototype.id, ["prototype-object"]);
 				continue;
 			}
 
 			constructor = exports.constructors.filter(prototypeIsContructorPrototype)[0];
 			if (constructor) {
-				div = document.createElement("div");
-				div.classList.add("constructor-prototype");
-				div.classList.add("constructor");
-				div.innerHTML = "(" + constructor + ").prototype";
-				output.appendChild(div);
-
-				div = document.createElement("div");
-				div.classList.add("constructor");
-				div.innerHTML = constructor;
-				output.appendChild(div);
-
+				appendDivToOutput("(" + constructor + ").prototype", ["constructor", "constructor-prototype"]);
+				appendDivToOutput(constructor, ["constructor"]);
 				continue;
 			}
 
 			if (prototype === Object.prototype) {
-				div = document.createElement("div");
-				div.id = "object-prototype";
-				div.innerHTML = "Object.prototype";
-				output.appendChild(div);
+				appendDivToOutput("Object.prototype", [], "object-prototype");
 			}
 		}
+	}
+
+	function appendDivToOutput(innerHTML, classList, id) {
+		var div = document.createElement("div");
+		var i;
+
+		if (innerHTML) {
+			div.innerHTML = innerHTML;
+		}
+		if (classList && classList.length >= 0) {
+			for (i = 0; i < classList.length; i++) {
+				div.classList.add(classList[i]);
+			}
+		}
+		if (id) {
+			div.id = id;
+		}
+		output.appendChild(div);
 	}
 })();
