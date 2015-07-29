@@ -1,5 +1,7 @@
 "use strict";
 
+import * as parser from "./parser"; // Babel requires './' as of this writing.
+
 var sampleCode = "function Foo(id) { this.id = id };" +
 	"\r\nvar foo = new Foo('foo');" +
 	"\r\nvar bar = Object.create(foo);" +
@@ -14,27 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	document.getElementById("run").addEventListener("click", () => {
 		codeArea.value = codeArea.value || sampleCode;
-		var exports = parseJS(codeArea.value || sampleCode);
-
-		exports.constructors = exports.constructors || [];
-		exports.constructors = exports.constructors.concat([
-			Function
-		]); // Include fundamental objects
-
+		var exports = parser.parse(codeArea.value || sampleCode);
 		display(exports);
 	});
 
 	document.getElementById("code-wrapper").classList.remove("is-uninitialized");
 });
-
-function parseJS(text) {
-	/* jslint evil: true*/
-	// This is part of required functionality
-	var code = new Function("exports", text);
-	var exports = {};
-	code(exports); // Assume users will put base object in exports.object and constructors in exports.constructors
-	return exports;
-}
 
 function display(exports) {
 	var prototype, constructor, nodes, i;
