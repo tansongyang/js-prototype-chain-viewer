@@ -1,4 +1,10 @@
-export function parse(code) {
+"use strict"
+
+function parse(code) {
+	if (!code) {
+		throw 'ArgumentException: "code" is null or undefined.';
+	}
+
 	/* jslint evil: true*/
 	// This is part of required functionality
 	let evaluate = new Function("exports", code);
@@ -15,4 +21,8 @@ export function parse(code) {
 	]); // Include fundamental objects
 
 	return exports;
+}
+
+export default {
+	parse: parse
 }
