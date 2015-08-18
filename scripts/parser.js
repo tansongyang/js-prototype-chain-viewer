@@ -23,6 +23,6 @@ function parse(code) {
 	return exports;
 }
 
-export default {
+export default Object.freeze({
 	parse: parse
-}
+});

@@ -1,4 +1,4 @@
-import * as parser from "../scripts/parser";
+import parser from "../scripts/parser";
 
 describe("parser", () => {
 	describe(".parse()", () => {

@@ -1,6 +1,6 @@
 "use strict";
 
-import * as parser from "./parser"; // Babel requires './' as of this writing.
+import parser from "./parser"; // Babel requires './' as of this writing.
 
 var sampleCode = "function Foo(id) { this.id = id };" +
 	"\r\nvar foo = new Foo('foo');" +
