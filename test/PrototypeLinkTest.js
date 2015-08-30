@@ -4,6 +4,16 @@
 import PrototypeLink from "../scripts/PrototypeLink";
 
 describe("PrototypeLink", () => {
+	describe("constructor(object)", () => {
+		it("returns the same `PrototypeLink` instance " +
+			"when created with the same `object`", () => {
+
+			let link0 = new PrototypeLink(Object.prototype);
+			let link1 = new PrototypeLink(Object.prototype);
+			expect(link0).to.equal(link1);
+		});
+	});
+
 	describe("name", () => {
 		it('returns the "name" property of `object`', () => {
 			let name = "Carl Ditters von Dittersdorf";
