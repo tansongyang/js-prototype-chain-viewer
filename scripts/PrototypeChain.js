@@ -6,8 +6,7 @@ const mArray = Symbol("PrototypeChain.mArray");
 
 export default class PrototypeChain {
 	constructor(object) {
-		this[mArray] = [ new PrototypeLink(object) ];
-		pushPrototypes(object, this[mArray]);
+		this[mArray] = Array.from(getPrototypeChain(object));
 	}
 
 	get length() {
@@ -23,11 +22,13 @@ export default class PrototypeChain {
 	}
 }
 
-function pushPrototypes(object, array) {
+function* getPrototypeChain(object) {
+	yield new PrototypeLink(object);
+
 	for (let prototype = Object.getPrototypeOf(object);
 		prototype !== null;
 		prototype = Object.getPrototypeOf(prototype)) {
 
-		array.push(new PrototypeLink(prototype));
+		yield new PrototypeLink(prototype);
 	}
 }
