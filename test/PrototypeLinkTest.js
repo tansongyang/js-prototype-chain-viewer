@@ -30,11 +30,20 @@ describe("PrototypeLink", () => {
 			expect(link.name).to.equal("(anonymous)");
 		});
 
+		it("returns the function's name when `object` is a named function", () => {
+			function Ditters() {}
+			let link = new PrototypeLink(Ditters);
+			expect(link.name).to.equal("Ditters");
+
+			let f = function vonDittersdorf() {};
+			link = new PrototypeLink(f);
+			expect(link.name).to.equal("vonDittersdorf");
+		});
 
 		it('returns "Constructor.prototype" when `object` is the prototype ' +
 			'of the constructor function "Constructor"', () => {
 
-			function Constructor() { }
+			function Constructor() {}
 			let c = new Constructor();
 			let object = Object.getPrototypeOf(c);
 			let link = new PrototypeLink(object);
