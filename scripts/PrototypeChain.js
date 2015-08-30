@@ -2,7 +2,7 @@
 
 import PrototypeLink from "./PrototypeLink";
 
-const mArray = Symbol("array");
+const mArray = Symbol("PrototypeChain.mArray");
 
 export default class PrototypeChain {
 	constructor(object) {
