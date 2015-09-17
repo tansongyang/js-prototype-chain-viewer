@@ -5,30 +5,30 @@ import PrototypeLink from "./PrototypeLink";
 const mArray = Symbol("PrototypeChain.mArray");
 
 export default class PrototypeChain {
-	constructor(object) {
-		this[mArray] = Array.from(getPrototypeChain(object));
-	}
+  constructor(object) {
+    this[mArray] = Array.from(getPrototypeChain(object));
+  }
 
-	get length() {
-		return this[mArray].length;
-	}
+  get length() {
+    return this[mArray].length;
+  }
 
-	[Symbol.iterator]() {
-		return this[mArray].values();
-	}
+  [Symbol.iterator]() {
+    return this[mArray].values();
+  }
 
-	get(index) {
-		return this[mArray][index];
-	}
+  get(index) {
+    return this[mArray][index];
+  }
 }
 
 function* getPrototypeChain(object) {
-	yield new PrototypeLink(object);
+  yield new PrototypeLink(object);
 
-	for (let prototype = Object.getPrototypeOf(object);
-		prototype !== null;
-		prototype = Object.getPrototypeOf(prototype)) {
+  for (let prototype = Object.getPrototypeOf(object);
+    prototype !== null;
+    prototype = Object.getPrototypeOf(prototype)) {
 
-		yield new PrototypeLink(prototype);
-	}
+    yield new PrototypeLink(prototype);
+  }
 }
