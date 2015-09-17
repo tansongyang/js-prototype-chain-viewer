@@ -1,7 +1,7 @@
 /* globals expect */
 "use strict";
 
-import PrototypeLink from "../scripts/PrototypeLink";
+import PrototypeLink from "../lib/PrototypeLink";
 
 describe("PrototypeLink", () => {
   describe("constructor(object)", () => {

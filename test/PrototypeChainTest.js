@@ -1,7 +1,7 @@
 /* globals expect */
 "use strict";
 
-import PrototypeChain from "../scripts/PrototypeChain";
+import PrototypeChain from "../lib/PrototypeChain";
 
 describe("PrototypeChain", () => {
   describe("constructor(object)", () => {

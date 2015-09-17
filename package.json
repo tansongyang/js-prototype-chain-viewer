@@ -3,14 +3,13 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "build": "npm run build:debug",
-    "build:debug": "npm run build:scripts -- -d",
-    "build:scripts": "browserify -e scripts/index.js -o scripts/bundle.js",
-    "clean": "rm -f scripts/bundle.js",
-    "rebuild": "npm run clean && npm run build",
+    "build": "echo 'TODO: build lib'",
+    "build:web": "browserify -e web/scripts/index.js -o web/scripts/bundle.js",
+    "clean": "rm -f web/scripts/bundle.js",
+    "rebuild": "npm run clean && npm run build && npm run build:web",
     "test": "mocha --require test/helper/config.js --compilers js:babel/register",
-    "watch": "parallelshell \"npm run watch:scripts\" \"npm run watch:test\"",
-    "watch:scripts": "nodemon -e js -w scripts/ \"npm run build-debug\"",
+    "watch": "parallelshell \"npm run watch:js\" \"npm run watch:test\"",
+    "watch:js": "nodemon -e js -w lib -w web/scripts/ \"npm run build\"",
     "watch:test": "npm run test -- -w"
   },
   "repository": {
