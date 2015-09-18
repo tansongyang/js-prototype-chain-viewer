@@ -1,4 +1,3 @@
-/* globals expect */
 "use strict";
 
 import PrototypeChain from "../lib/PrototypeChain";

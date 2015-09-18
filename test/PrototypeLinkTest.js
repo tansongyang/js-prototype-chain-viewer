@@ -1,4 +1,3 @@
-/* globals expect */
 "use strict";
 
 import PrototypeLink from "../lib/PrototypeLink";
