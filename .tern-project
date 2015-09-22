@@ -3,8 +3,7 @@
     "browser",
     "chai",
     "ecma5",
-    "ecma6",
-    "jquery"
+    "ecma6"
   ],
   "plugins": {
     "es_modules": true

@@ -1,0 +1,9 @@
+{
+  "source": "lib",
+  "destination": "doc",
+  "test": {
+    "type": "mocha",
+    "source": "test",
+    "includes": [".+Test\\.js$"]
+  }
+}

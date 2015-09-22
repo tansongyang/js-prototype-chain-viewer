@@ -4,9 +4,7 @@ import PrototypeChain from "../lib/PrototypeChain";
 
 describe("PrototypeChain", () => {
   describe("constructor(object)", () => {
-    it("creates a `PrototypeChain` which can be enumerated in order",
-      () => {
-
+    it("creates a PrototypeChain which can be enumerated in order", () => {
       let f = () => {};
       let chain = new PrototypeChain(f);
       let index = 0;
@@ -31,7 +29,7 @@ describe("PrototypeChain", () => {
     });
   });
 
-  describe("get(index)", () => {
+  describe("#get(index)", () => {
     it("gets the correct link in the prototype chain", () => {
       let a = [];
       let chain = new PrototypeChain(a);
