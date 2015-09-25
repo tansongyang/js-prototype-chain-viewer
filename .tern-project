@@ -6,6 +6,9 @@
     "ecma6"
   ],
   "plugins": {
+    "modules": {
+      "dontLoad": "node_modules/*.js"
+    },
     "es_modules": true
   }
 }
