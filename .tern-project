@@ -9,6 +9,7 @@
     "modules": {
       "dontLoad": "node_modules/*.js"
     },
-    "es_modules": true
+    "node": {},
+    "es_modules": {}
   }
 }
