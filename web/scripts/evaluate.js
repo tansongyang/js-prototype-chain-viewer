@@ -28,3 +28,7 @@ export default function evaluateJS(code) {
 
   return exports;
 }
+
+export class EvaluationResult {
+  
+}
