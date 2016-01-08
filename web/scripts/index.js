@@ -1,13 +1,8 @@
 "use strict";
 
-import parser from "./parser"; // Babel requires './' as of this writing.
+import parse from "./parser"; // Babel requires './' as of this writing.
+import sampleCode from "./samples";
 
-var sampleCode = "function Foo(id) { this.id = id };" +
-  "\r\nvar foo = new Foo('foo');" +
-  "\r\nvar bar = Object.create(foo);" +
-  "\r\nbar.id = 'bar';" +
-  "\r\nexports.object = bar;" +
-  "\r\nexports.constructors = [Foo];";
 var codeArea, outputContent;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -16,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("run").addEventListener("click", () => {
     codeArea.value = codeArea.value || sampleCode;
-    var exports = parser.parse(codeArea.value || sampleCode);
+    var exports = parse(codeArea.value || sampleCode);
     display(exports);
   });
 
