@@ -2,7 +2,11 @@
 
 /**
  * Evaluates the code as JavaScript.
- * Assumes that the code assigns to the `exports` object.
+ * Code should return the following object:
+ * {
+ *   object: Object
+ *   constructors: Function[]
+ * }
  * @param  {String} code The code to run.
  * @return {Object} The exports object from the code.
  */
@@ -13,22 +17,15 @@ export default function evaluateJS(code) {
 
   /* jslint evil: true*/
   // This is part of required functionality
-  let evaluate = new Function('exports', code);
-  let exports = {};
-  evaluate(exports);
+  let evaluate = new Function(code);
+  let result = evaluate(result);
+  result.constructors = result.constructors || [];
 
-  // Assume users will put base object in exports.object
-  // and constructors in exports.constructors
-
-  exports.constructors = exports.constructors || [];
-  exports.constructors = exports.constructors.concat([
+  // Include fundamental objects
+  result.constructors = result.constructors.concat([
     Function,
     Array
-  ]); // Include fundamental objects
+  ]);
 
-  return exports;
-}
-
-export class EvaluationResult {
-  
+  return result;
 }
