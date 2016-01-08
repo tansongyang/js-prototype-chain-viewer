@@ -1,12 +1,12 @@
 'use strict';
 
 /**
- * Parses the code as JavaScript.
+ * Evaluates the code as JavaScript.
  * Assumes that the code assigns to the `exports` object.
  * @param  {String} code The code to run.
  * @return {Object} The exports object from the code.
  */
-export default function parse(code) {
+export default function evaluateJS(code) {
   if (!code) {
     throw 'ArgumentException: "code" is null or undefined.';
   }

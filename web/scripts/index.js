@@ -1,6 +1,6 @@
 "use strict";
 
-import parse from "./parser"; // Babel requires './' as of this writing.
+import evaluateJS from "./evaluate"; // Babel requires './' as of this writing.
 import sampleCode from "./samples";
 
 var codeArea, outputContent;
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("run").addEventListener("click", () => {
     codeArea.value = codeArea.value || sampleCode;
-    var exports = parse(codeArea.value || sampleCode);
+    var exports = evaluateJS(codeArea.value || sampleCode);
     display(exports);
   });
 
