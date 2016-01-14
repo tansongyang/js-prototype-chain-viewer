@@ -7,3 +7,6 @@ bin/*
 
 # Ignore doc output
 doc/
+
+# Ignore Sublime artifacts
+*.sublime-workspace
