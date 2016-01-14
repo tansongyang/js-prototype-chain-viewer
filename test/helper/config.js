@@ -1,6 +1,7 @@
 "use strict";
 
-import chai from "chai";
+import 'babel-polyfill';
+import chai from 'chai';
 
 chai.config.includeStack = true;
 
