@@ -1,6 +1,9 @@
 'use strict';
 
-import evaluateJS from './evaluate'; // Babel requires './' as of this writing.
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Editor from './editor.jsx';
+import evaluateJS from './evaluate';
 import sampleCode from './samples';
 
 var codeArea, outputContent;
@@ -9,11 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
   codeArea = document.getElementById('code');
   outputContent = document.getElementById('output-content');
 
-  document.getElementById('run').addEventListener('click', () => {
-    codeArea.value = codeArea.value || sampleCode;
-    var exports = evaluateJS(codeArea.value || sampleCode);
-    display(exports);
-  });
+  ReactDOM.render(<Editor />, document.getElementById('code-wrapper'));
+
+  // document.getElementById('run').addEventListener('click', () => {
+  //   codeArea.value = codeArea.value || sampleCode;
+  //   var exports = evaluateJS(codeArea.value || sampleCode);
+  //   display(exports);
+  // });
 
   document.getElementById('code-wrapper').classList.remove('is-uninitialized');
 });

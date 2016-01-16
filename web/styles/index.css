@@ -60,17 +60,6 @@
 	border-bottom: 2px solid #49483e;
 }
 
-#code {
-	width: 100%;
-	min-height: 640px;
-	padding: 8px 16px;
-	resize: none;
-}
-
-#code:focus {
-	outline: 0;
-}
-
 /* Output content */
 #output-content {
 	width: 576px; /* 640 (min-width of parent) - 64 */

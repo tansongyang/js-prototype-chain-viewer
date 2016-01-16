@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "browserify -e lib/index.js -o bin/js-prototype-chain-viewer.js",
-    "build:web": "browserify -e web/scripts/index.js -o web/scripts/bundle.js",
+    "build:web": "browserify -e web/scripts/index.jsx -o web/scripts/bundle.js",
     "clean": "rm -r -f bin/* && rm -f web/scripts/bundle.js && rm -r -f doc/*",
     "doc": "esdoc -c doc.json",
     "rebuild": "npm run clean && npm run build && npm run build:web",
@@ -34,6 +34,7 @@
     "babelify": "^7.2.0",
     "browserify": "^10.2.6",
     "chai": "^3.2.0",
+    "codemirror": "^5.10.0",
     "jsdoc": "^3.3.2",
     "jshint": "^2.8.0",
     "mocha": "^2.2.5",
