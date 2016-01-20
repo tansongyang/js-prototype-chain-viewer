@@ -6,19 +6,19 @@ import Editor from './editor.jsx';
 import evaluateJS from './evaluate';
 import sampleCode from './samples';
 
-var codeArea, outputContent;
+var outputContent;
 
 document.addEventListener('DOMContentLoaded', () => {
-  codeArea = document.getElementById('code');
   outputContent = document.getElementById('output-content');
 
-  ReactDOM.render(<Editor />, document.getElementById('code-wrapper'));
+  const editor =
+    ReactDOM.render(<Editor />, document.getElementById('code-wrapper'));
+  editor.setValue(sampleCode);
 
-  // document.getElementById('run').addEventListener('click', () => {
-  //   codeArea.value = codeArea.value || sampleCode;
-  //   var exports = evaluateJS(codeArea.value || sampleCode);
-  //   display(exports);
-  // });
+  document.getElementById('run').addEventListener('click', () => {
+    const exports = evaluateJS(editor.getValue());
+    display(exports);
+  });
 
   document.getElementById('code-wrapper').classList.remove('is-uninitialized');
 });
