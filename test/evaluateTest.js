@@ -1,6 +1,6 @@
 'use strict';
 
-import evaluateJS from '../web/scripts/evaluate';
+import evaluateJS from '../lib/evaluate';
 import code from '../web/scripts/samples';
 
 describe('evaluate', () => {

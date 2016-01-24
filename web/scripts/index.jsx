@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Editor from './editor.jsx';
-import evaluateJS from './evaluate';
+import evaluateJS from '../../lib/evaluate';
 import sampleCode from './samples';
 
 var outputContent;
