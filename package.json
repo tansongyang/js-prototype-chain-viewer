@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "build": "browserify -e lib/index.js -o bin/js-prototype-chain-viewer.js",
-    "build:web": "browserify -e web/scripts/index.jsx -o web/scripts/bundle.js",
-    "clean": "rm -r -f bin/* && rm -f web/scripts/bundle.js && rm -r -f doc/*",
+    "build": "browserify -e lib/index.js -o dist/js-prototype-chain-viewer.js",
+    "build:web": "npm run build && browserify -e web/scripts/index.jsx -o web/scripts/bundle.js",
+    "clean": "rm -r -f dist/* && rm -f web/scripts/bundle.js && rm -r -f doc/*",
     "doc": "esdoc -c doc.json",
     "rebuild": "npm run clean && npm run build && npm run build:web",
     "test": "mocha --require test/helper/config.js --compilers js:babel-register",

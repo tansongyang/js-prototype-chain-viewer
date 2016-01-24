@@ -2,7 +2,7 @@
   "folders": [{
     "path": ".",
     "file_exclude_patterns": ["web/scripts/bundle.js"],
-    "folder_exclude_patterns": ["bin", "node_modules"],
+    "folder_exclude_patterns": ["dist", "node_modules"],
     "follow_symlinks": true
   }]
 }

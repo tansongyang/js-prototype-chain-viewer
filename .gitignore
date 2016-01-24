@@ -3,7 +3,7 @@ node_modules/
 
 # Ignore build output
 web/scripts/bundle.js
-bin/*
+dist/*
 
 # Ignore doc output
 doc/
