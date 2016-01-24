@@ -1,5 +1,6 @@
 'use strict';
 
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Editor from './editor.jsx';
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('code-wrapper').classList.remove('is-uninitialized');
 });
 
-function display(exports) {
+function display(result) {
   var prototype, constructor, nodes, i;
 
   // Predicate for checking if prototype is a constructor prototype
@@ -37,17 +38,23 @@ function display(exports) {
   }
 
   // Append root object
-  appendPrototypeNode(exports.object.id, ['prototype'], 'root-object');
+  appendPrototypeNode(result.object.id, ['prototype'], 'root-object');
 
   // Walk prototype chain
-  for (prototype = Object.getPrototypeOf(exports.object); prototype; prototype = Object.getPrototypeOf(prototype)) {
+  for (let prototypeLink of result.chain) {
+    if (prototypeLink.object === result.object) {
+      continue; // Root object has already been handled
+    }
+
+    prototype = prototypeLink.object;
+
     if (prototype === Object.prototype) {
       // Reached the end, which is Object.prototype
       appendPrototypeNode('Object.prototype', ['prototype'], 'object-prototype');
       break;
     }
 
-    constructor = exports.constructors.filter(prototypeIsContructorPrototype)[0];
+    constructor = result.constructors.filter(prototypeIsContructorPrototype)[0];
     if (constructor) {
       // This prototype is a constructor's prototype
       appendPrototypeNode(constructor.name, ['constructor'], constructor.name, true);
