@@ -2,24 +2,24 @@
  * Resets/base rules
  */
 * {
-	padding: 0;
-	border: 0;
-	margin: 0;
-	background-color: #272822;
-	color: #f8f8f2;
-	font-size: 16px;
-	font-family: Consolas, monospace;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  background-color: #272822;
+  color: #f8f8f2;
+  font-size: 16px;
+  font-family: Consolas, monospace;
 }
 
 /*
  * Layouts
  */
 .half-column {
-	position: relative;
-	float: left;
-	width: 50%;
-	min-width: 640px;
-	box-sizing: border-box;
+  position: relative;
+  float: left;
+  width: 50%;
+  min-width: 640px;
+  box-sizing: border-box;
 }
 
 /*
@@ -27,125 +27,125 @@
  */
 /* Run button */
 #run {
-	display: block;
-	width: 64px;
-	height: 32px;
-	font-size: large;
-	text-transform: uppercase;
+  display: block;
+  width: 64px;
+  height: 32px;
+  font-size: large;
+  text-transform: uppercase;
 }
 
 #run::before {
-	content: "\25b6 ";
-	color: #a6e22e;
+  content: "\25b6 ";
+  color: #a6e22e;
 }
 
 #run:hover {
-	background-color: #49483e;
-	cursor: pointer;
+  background-color: #49483e;
+  cursor: pointer;
 }
 
 #run:active {
-	/* Wish I didn't have to use !important; why won't active replace focus? */
-	background-color: #75715e !important;
+  /* Wish I didn't have to use !important; why won't active replace focus? */
+  background-color: #75715e !important;
 }
 
 #run:focus {
-	background-color: #49483e;
-	outline: 0;
+  background-color: #49483e;
+  outline: 0;
 }
 
 /* Code area */
 #code-wrapper {
-	border-top: 2px solid #49483e;
-	border-bottom: 2px solid #49483e;
+  border-top: 2px solid #49483e;
+  border-bottom: 2px solid #49483e;
 }
 
 /* Output content */
 #output-content {
-	width: 576px; /* 640 (min-width of parent) - 64 */
-	padding: 32px 0;
-	margin: 0 auto;
+  width: 576px; /* 640 (min-width of parent) - 64 */
+  padding: 32px 0;
+  margin: 0 auto;
 }
 
 .output-div {
-	visibility: visible;
-	opacity: 1;
-	background-color: #49483e;
-	transform: scale(0.9);
-	transition: visibility 0.2s ease-in-out,
-		opacity 0.2s ease-in-out,
-		transform 0.2s ease-in-out;
+  visibility: visible;
+  opacity: 1;
+  background-color: #49483e;
+  transform: scale(0.9);
+  transition: visibility 0.2s ease-in-out,
+    opacity 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
 }
 
 .output-div.is-hidden {
-	visibility: hidden;
-	opacity: 0;
-	transform: translateX(calc(-100%));
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(calc(-100%));
 }
 
 .output-div.is-active {
-	transform: scale(1.2) translateX(calc(200%));
+  transform: scale(1.2) translateX(calc(200%));
 }
 
 .output-div:hover {
-	cursor: pointer;
-	background-color: #75715e;
+  cursor: pointer;
+  background-color: #75715e;
 }
 
 .output-div-text {
-	/* Temporary hack to vertically center text */
-	position: relative;
-	top: 40%;
-	background-color: rgba(0, 0, 0, 0);
-	color: inherit;
-	vertical-align: middle;
+  /* Temporary hack to vertically center text */
+  position: relative;
+  top: 40%;
+  background-color: rgba(0, 0, 0, 0);
+  color: inherit;
+  vertical-align: middle;
 }
 
 .prototype {
-	width: 160px;
-	height: 160px;
-	border-radius: 80px;
-	color: #66d9ef;
-	text-align: center;
-	white-space: nowrap;
+  width: 160px;
+  height: 160px;
+  border-radius: 80px;
+  color: #66d9ef;
+  text-align: center;
+  white-space: nowrap;
 }
 
 #root-object {
-	color: #a6e22e;
-	font-weight: bold;
+  color: #a6e22e;
+  font-weight: bold;
 }
 
 .constructor-prototype-wrapper {
-	height: 160px; /* So it takes up the same height */
-	background-color: #272822;
+  height: 160px; /* So it takes up the same height */
+  background-color: #272822;
 }
 
 .constructor-prototype-wrapper::after {
-	/* Clear because internal divs use float */
-	content: ".";
-	visibility: hidden;
-	display: "block";
-	height: 0;
-	clear: both;
+  /* Clear because internal divs use float */
+  content: ".";
+  visibility: hidden;
+  display: "block";
+  height: 0;
+  clear: both;
 }
 
 .constructor-prototype {
-	float: left;
-	color: #e6db74;
-	font-weight: bold;
+  float: left;
+  color: #e6db74;
+  font-weight: bold;
 }
 
 .constructor {
-	float: left;
-	width: 80px;
-	height: 80px;
-	border-radius: 40px;
-	text-align: center;
-	white-space: nowrap;
-	color: #fd971f;
+  float: left;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  text-align: center;
+  white-space: nowrap;
+  color: #fd971f;
 }
 
 #object-prototype {
-	color: #f92672;
-	font-weight: bold;
+  color: #f92672;
+  font-weight: bold;
 }
