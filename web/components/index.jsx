@@ -5,7 +5,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Editor from './editor.jsx';
 import evaluateJS from '../../lib/evaluate';
-import sampleCode from '../scripts/samples';
 
 var outputContent;
 
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const editor =
     ReactDOM.render(<Editor />, document.getElementById('code-wrapper'));
-  editor.setValue(sampleCode);
 
   document.getElementById('run').addEventListener('click', () => {
     const exports = evaluateJS(editor.getValue());
