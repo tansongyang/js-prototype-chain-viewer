@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Editor from './editor.jsx';
 import evaluateJS from '../../lib/evaluate';
-import sampleCode from './samples';
+import sampleCode from '../scripts/samples';
 
 var outputContent;
 
