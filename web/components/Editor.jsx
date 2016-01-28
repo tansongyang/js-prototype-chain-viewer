@@ -53,9 +53,9 @@ const Editor = React.createClass({
   render() {
     return (
       <div>
-        <textarea ref={textarea => this._textarea = textarea}>
-          {this.props.sampleCode}
-        </textarea>
+        <textarea
+          ref={textarea => this._textarea = textarea}
+          defaultValue={this.props.sampleCode} />
       </div>
     );
   }
