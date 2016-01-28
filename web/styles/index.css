@@ -83,10 +83,6 @@
   transform: translateX(calc(-100%));
 }
 
-.output-div.is-active {
-  transform: scale(1.2) translateX(calc(200%));
-}
-
 .output-div:hover {
   cursor: pointer;
   background-color: #75715e;

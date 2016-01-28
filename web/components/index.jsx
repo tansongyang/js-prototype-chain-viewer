@@ -3,16 +3,19 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Editor from './editor.jsx';
+import Editor from './Editor.jsx';
+import PropertiesWindow from './PropertiesWindow.jsx';
 import evaluateJS from '../../lib/evaluate';
 
-var outputContent;
+var outputContent, propertiesWindow;
 
 document.addEventListener('DOMContentLoaded', () => {
   outputContent = document.getElementById('output-content');
 
   const editor =
     ReactDOM.render(<Editor />, document.getElementById('code-wrapper'));
+  propertiesWindow =
+    ReactDOM.render(<PropertiesWindow />, document.getElementById('properties-window'));
 
   document.getElementById('run').addEventListener('click', () => {
     const exports = evaluateJS(editor.getValue());
@@ -36,7 +39,7 @@ function display(result) {
   }
 
   // Append root object
-  appendPrototypeNode(result.object.id, ['prototype'], 'root-object');
+  appendPrototypeNode(result.object, result.object.id, ['prototype'], 'root-object');
 
   // Walk prototype chain
   for (let prototypeLink of result.chain) {
@@ -48,17 +51,17 @@ function display(result) {
 
     if (prototype === Object.prototype) {
       // Reached the end, which is Object.prototype
-      appendPrototypeNode('Object.prototype', ['prototype'], 'object-prototype');
+      appendPrototypeNode(prototype, 'Object.prototype', ['prototype'], 'object-prototype');
       break;
     }
 
     constructor = result.constructors.filter(prototypeIsContructorPrototype)[0];
     if (constructor) {
       // This prototype is a constructor's prototype
-      appendPrototypeNode(constructor.name, ['constructor'], constructor.name, true);
+      appendPrototypeNode(constructor, constructor.name, ['constructor'], constructor.name, true);
     } else {
       // This prototype is just an object
-      appendPrototypeNode(prototype.id, ['prototype']);
+      appendPrototypeNode(prototype, prototype.id, ['prototype']);
     }
   }
 
@@ -74,7 +77,7 @@ function display(result) {
   }, 200);
 }
 
-function appendPrototypeNode(text, classList, id, isConstructor) {
+function appendPrototypeNode(object, text, classList, id, isConstructor) {
   var div = document.createElement('div'),
     innerDiv;
 
@@ -92,6 +95,10 @@ function appendPrototypeNode(text, classList, id, isConstructor) {
   }
 
   outputContent.appendChild(div);
+
+  div.addEventListener('click', () => {
+    propertiesWindow.display(object);
+  })
 }
 
 function getPrototypeNode(text, classList, id) {
@@ -111,14 +118,6 @@ function getPrototypeNode(text, classList, id) {
   if (id) {
     div.id = id;
   }
-
-  div.addEventListener('click', () => {
-    if (div.classList.contains('is-active')) {
-      div.classList.remove('is-active');
-    } else {
-      div.classList.add('is-active');
-    }
-  });
 
   return div;
 }
