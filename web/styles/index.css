@@ -111,34 +111,9 @@
   font-weight: bold;
 }
 
-.constructor-prototype-wrapper {
-  height: 160px; /* So it takes up the same height */
-  background-color: #272822;
-}
-
-.constructor-prototype-wrapper::after {
-  /* Clear because internal divs use float */
-  content: ".";
-  visibility: hidden;
-  display: "block";
-  height: 0;
-  clear: both;
-}
-
 .constructor-prototype {
-  float: left;
   color: #e6db74;
   font-weight: bold;
-}
-
-.constructor {
-  float: left;
-  width: 80px;
-  height: 80px;
-  border-radius: 40px;
-  text-align: center;
-  white-space: nowrap;
-  color: #fd971f;
 }
 
 #object-prototype {

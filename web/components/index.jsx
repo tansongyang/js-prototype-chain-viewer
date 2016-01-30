@@ -78,21 +78,9 @@ function display(result) {
 }
 
 function appendPrototypeNode(object, text, classList, id, isConstructor) {
-  var div = document.createElement('div'),
-    innerDiv;
-
-  if (isConstructor) {
-    // Group constructor and constructor,prototype together
-    div.classList.add('constructor-prototype-wrapper');
-
-    innerDiv = getPrototypeNode(id + '.prototype', ['prototype', 'constructor-prototype']);
-    div.appendChild(innerDiv);
-
-    innerDiv = getPrototypeNode(id, ['constructor']);
-    div.appendChild(innerDiv);
-  } else {
-    div = getPrototypeNode(text, classList, id);
-  }
+  var div = isConstructor ?
+    getPrototypeNode(id + '.prototype', ['prototype', 'constructor-prototype']) :
+    getPrototypeNode(text, classList, id);
 
   outputContent.appendChild(div);
 
