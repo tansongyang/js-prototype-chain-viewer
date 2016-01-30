@@ -2,11 +2,16 @@
 
 import React from 'react';
 
+const classPropertyName = 'property-name';
+
 const PropertiesWindow = React.createClass({
   getInitialState() {
     return {
       object: null
     }
+  },
+  clear() {
+    this.setState(this.getInitialState());
   },
   display(object) {
     this.setState({ object });
@@ -24,7 +29,9 @@ const PropertiesWindow = React.createClass({
             let propertyValue = object[property];
             propertyValue = propertyValue ? propertyValue.toString() : '';
             return (
-              <li key={property}>{property}: {propertyValue}</li>
+              <li key={property}>
+                <span className={classPropertyName}>{property}</span>: {propertyValue}
+              </li>
             );
           })}
         </ul>

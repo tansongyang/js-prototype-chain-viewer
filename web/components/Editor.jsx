@@ -39,14 +39,15 @@ const Editor = React.createClass({
     return this._reactCodemirror.getCodeMirror().getDoc().getValue();
   },
   updateCode: function(newCode) {
-      this.setState({
-          code: newCode
-      });
+    this.setState({
+      code: newCode
+    });
   },
   // See https://facebook.github.io/react/docs/more-about-refs.html#the-ref-callback-attribute
   render() {
     const options = {
       lineNumbers: true,
+      tabSize: 2,
       theme: 'monokai'
     };
     return (

@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(<PropertiesWindow />, document.getElementById('properties-window'));
 
   document.getElementById('run').addEventListener('click', () => {
+    propertiesWindow.clear();
     const exports = evaluateJS(editor.getValue());
     display(exports);
   });
