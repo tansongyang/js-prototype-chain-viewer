@@ -1,9 +1,9 @@
 'use strict';
 
 import React from 'react';
-import CodeMirror from 'codemirror';
+import Codemirror from 'react-codemirror';
 // Used with CodeMirror
-import '../../node_modules/codemirror/mode/javascript/javascript.js';
+import 'codemirror/mode/javascript/javascript';
 
 const sampleCode = `/* Sample code */
 
@@ -30,32 +30,32 @@ return {
 `
 
 const Editor = React.createClass({
-  propTypes: {
-    sampleCode: React.PropTypes.string
-  },
-  getDefaultProps() {
+  getInitialState() {
     return {
-      sampleCode: sampleCode
-    }
-  },
-  // Better to have this interact with the browser instead of `render`;
-  // see https://facebook.github.io/react/docs/component-specs.html#render
-  componentDidMount() {
-    this._codeMirror = CodeMirror.fromTextArea(this._textarea, { theme: 'monokai' });
+      code: sampleCode
+    };
   },
   getValue() {
-    return this._codeMirror.getDoc().getValue();
+    return this._reactCodemirror.getCodeMirror().getDoc().getValue();
   },
-  setValue(content) {
-    this._codeMirror.getDoc().setValue(content);
+  updateCode: function(newCode) {
+      this.setState({
+          code: newCode
+      });
   },
   // See https://facebook.github.io/react/docs/more-about-refs.html#the-ref-callback-attribute
   render() {
+    const options = {
+      lineNumbers: true,
+      theme: 'monokai'
+    };
     return (
       <div>
-        <textarea
-          ref={textarea => this._textarea = textarea}
-          defaultValue={this.props.sampleCode} />
+        <Codemirror
+          ref={ref => this._reactCodemirror = ref}
+          value={this.state.code}
+          options={options}
+          onChange={this.updateCode} />
       </div>
     );
   }
