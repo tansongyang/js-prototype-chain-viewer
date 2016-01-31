@@ -1,7 +1,7 @@
 {
   "name": "js-prototype-chain-viewer",
   "version": "0.0.1",
-  "description": "",
+  "description": "A visualization of JavaScript prototype chains.",
   "scripts": {
     "build": "browserify -e lib/index.js -o dist/js-prototype-chain-viewer.js",
     "build:web": "npm run build && browserify -o web/scripts/bundle.js -e web/components/index.jsx -p [minifyify --map /web/scripts/bundle.js.map --output web/scripts/bundle.js.map] -d",
@@ -9,6 +9,7 @@
     "dev": "npm run open:dev & npm run serve -s",
     "doc": "esdoc -c doc.json",
     "open:dev": "opener http://localhost:8080",
+    "open:prod": "opener http://tansongyang.github.io/js-prototype-chain-viewer/",
     "rebuild": "npm run clean && npm run build:web",
     "serve": "http-server",
     "test": "mocha --require test/helper/config.js --compilers js:babel-register",
