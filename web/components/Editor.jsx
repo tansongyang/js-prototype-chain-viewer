@@ -13,7 +13,7 @@ function Foo(id) {
   this.id = id;
 }
 
-// Create a new Foo with id = 'food'.
+// Create a new Foo with id = 'foo'.
 var foo = new Foo('foo');
 
 // Create an object whose prototype is foo.
