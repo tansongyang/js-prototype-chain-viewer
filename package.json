@@ -1,6 +1,6 @@
 {
   "name": "js-prototype-chain-viewer",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A visualization of JavaScript prototype chains.",
   "scripts": {
     "build": "browserify -e lib/index.js -o dist/js-prototype-chain-viewer.js",
