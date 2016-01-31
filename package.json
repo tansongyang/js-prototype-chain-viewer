@@ -5,9 +5,9 @@
   "scripts": {
     "build": "browserify -e lib/index.js -o dist/js-prototype-chain-viewer.js",
     "build:web": "npm run build && browserify -o web/scripts/bundle.js -e web/components/index.jsx -p [minifyify --map /web/scripts/bundle.js.map --output web/scripts/bundle.js.map] -d",
-    "clean": "rm -r -f dist/* && rm -f web/scripts/bundle.js && rm -r -f doc/*",
+    "clean": "rimraf dist/* && rimraf -f web/scripts/bundle.js* && rimraf -r -f doc/*",
     "doc": "esdoc -c doc.json",
-    "rebuild": "npm run clean && npm run build && npm run build:web",
+    "rebuild": "npm run clean && npm run build:web",
     "serve": "http-server",
     "test": "mocha --require test/helper/config.js --compilers js:babel-register",
     "watch": "parallelshell \"npm run watch:js\" \"npm run watch:test\"",
@@ -46,6 +46,7 @@
     "react": "^0.14.6",
     "react-codemirror": "^0.2.5",
     "react-dom": "^0.14.6",
+    "rimraf": "^2.5.1",
     "watch": "^0.16.0"
   },
   "browserify": {
