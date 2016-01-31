@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "browserify -e lib/index.js -o dist/js-prototype-chain-viewer.js",
-    "build:web": "npm run build && browserify -e web/components/index.jsx -o web/scripts/bundle.js",
+    "build:web": "npm run build && browserify -o web/scripts/bundle.js -e web/components/index.jsx -p [minifyify --map /web/scripts/bundle.js.map --output web/scripts/bundle.js.map] -d",
     "clean": "rm -r -f dist/* && rm -f web/scripts/bundle.js && rm -r -f doc/*",
     "doc": "esdoc -c doc.json",
     "rebuild": "npm run clean && npm run build && npm run build:web",
@@ -37,12 +37,13 @@
     "codemirror": "^5.10.0",
     "jsdoc": "^3.3.2",
     "jshint": "^2.8.0",
+    "minifyify": "^7.2.1",
     "mocha": "^2.2.5",
     "nodemon": "^1.4.1",
     "parallelshell": "^2.0.0",
     "react": "^0.14.6",
-    "react-dom": "^0.14.6",
     "react-codemirror": "^0.2.5",
+    "react-dom": "^0.14.6",
     "watch": "^0.16.0"
   },
   "browserify": {
