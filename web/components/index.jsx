@@ -59,7 +59,7 @@ function display(result) {
     constructor = result.constructors.filter(prototypeIsContructorPrototype)[0];
     if (constructor) {
       // This prototype is a constructor's prototype
-      appendPrototypeNode(constructor, constructor.name, ['constructor'], constructor.name, true);
+      appendPrototypeNode(constructor.prototype, constructor.name, ['constructor'], constructor.name, true);
     } else {
       // This prototype is just an object
       appendPrototypeNode(prototype, prototype.id, ['prototype']);
