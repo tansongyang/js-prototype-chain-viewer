@@ -21,6 +21,10 @@ const PropertiesWindow = React.createClass({
     let properties = [];
     if (object) {
       properties = Object.getOwnPropertyNames(object);
+      if (object === Function.prototype) {
+        // Address issue: http://stackoverflow.com/questions/31921189/caller-and-arguments-are-restricted-function-properties-and-cannot-be-access
+        properties = properties.filter(p => p !== 'caller' && p !== 'arguments');
+      }
     }
     return (
       <div>
