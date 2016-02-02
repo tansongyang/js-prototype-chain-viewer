@@ -46,7 +46,7 @@ describe('PrototypeLink', () => {
     });
   });
 
-  describe('#getOwnPropertiesSafe', () => {
+  describe('#getOwnPropertyNamesSafe', () => {
     it('returns normal own properties', () => {
       const link = new PrototypeLink(Function.prototype);
       expect(link).to.have.property('toString');
