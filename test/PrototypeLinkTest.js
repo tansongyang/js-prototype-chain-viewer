@@ -12,6 +12,15 @@ describe('PrototypeLink', () => {
   });
 
   describe('#name', () => {
+    it('returns the "id" property of object', () => {
+      const id = '4b0f8123-e491-4df4-b455-04a2954bb689';
+      const object = {
+        id: id 
+      };
+      const link = new PrototypeLink(object);
+      expect(link.name).to.equal(id);
+    });
+
     it('returns the "name" property of object', () => {
       let name = 'Carl Ditters von Dittersdorf';
       let object = {
