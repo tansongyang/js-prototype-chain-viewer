@@ -5,8 +5,8 @@ import PrototypeLink from '../lib/PrototypeLink';
 describe('PrototypeLink', () => {
   describe('constructor(object)', () => {
     it('returns the same instance when created with the same object', () => {
-      let link0 = new PrototypeLink(Object.prototype);
-      let link1 = new PrototypeLink(Object.prototype);
+      const link0 = new PrototypeLink(Object.prototype);
+      const link1 = new PrototypeLink(Object.prototype);
       expect(link0).to.equal(link1);
     });
   });
@@ -22,17 +22,17 @@ describe('PrototypeLink', () => {
     });
 
     it('returns the "name" property of object', () => {
-      let name = 'Carl Ditters von Dittersdorf';
-      let object = {
+      const name = 'Carl Ditters von Dittersdorf';
+      const object = {
         name: name
       };
-      let link = new PrototypeLink(object);
+      const link = new PrototypeLink(object);
       expect(link.name).to.equal(name);
     });
 
     it('returns "(anonymous)" when object has no "name" property', () => {
-      let object = {};
-      let link = new PrototypeLink(object);
+      const object = {};
+      const link = new PrototypeLink(object);
       expect(link.name).to.equal('(anonymous)');
     });
 
@@ -41,16 +41,16 @@ describe('PrototypeLink', () => {
       let link = new PrototypeLink(Ditters);
       expect(link.name).to.equal('Ditters');
 
-      let f = function vonDittersdorf() {};
+      const f = function vonDittersdorf() {};
       link = new PrototypeLink(f);
       expect(link.name).to.equal('vonDittersdorf');
     });
 
     it('returns "Constructor.prototype" when object is the prototype of the constructor function "Constructor"', () => {
       function Constructor() {}
-      let c = new Constructor();
-      let object = Object.getPrototypeOf(c);
-      let link = new PrototypeLink(object);
+      const c = new Constructor();
+      const object = Object.getPrototypeOf(c);
+      const link = new PrototypeLink(object);
       expect(link.name).to.equal('Constructor.prototype');
     });
   });
