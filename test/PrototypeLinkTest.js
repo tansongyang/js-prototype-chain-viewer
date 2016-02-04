@@ -58,13 +58,15 @@ describe('PrototypeLink', () => {
   describe('#getOwnPropertyNamesSafe', () => {
     it('returns normal own properties', () => {
       const link = new PrototypeLink(Function.prototype);
-      expect(link).to.have.property('toString');
+      const properties = link.getOwnPropertyNamesSafe();
+      expect(properties).to.contain('toString');
     });
 
     it('does not return "caller" and "arguments" on Function.prototype', () => {
       const link = new PrototypeLink(Function.prototype);
-      expect(link).not.to.have.property('caller');
-      expect(link).not.to.have.property('arguments');
+      const properties = link.getOwnPropertyNamesSafe();
+      expect(properties).not.to.contain('caller');
+      expect(properties).not.to.contain('arguments');
     });
   });
 });
