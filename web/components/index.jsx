@@ -27,48 +27,39 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function display(result) {
-  var prototype, constructor, nodes, i;
-
-  // Predicate for checking if prototype is a constructor prototype
-  function prototypeIsContructorPrototype(constructor) {
-    return prototype === constructor.prototype;
-  }
-
   // Clear original
   while (outputContent.firstChild) {
     outputContent.removeChild(outputContent.firstChild);
   }
 
-  // Append root object
-  appendPrototypeNode(result.object, result.object.id, ['prototype'], 'root-object');
-
   // Walk prototype chain
-  for (let prototypeLink of result.chain) {
-    if (prototypeLink.object === result.object) {
-      continue; // Root object has already been handled
+  for (let link of result.chain) {
+    if (link.object === result.object) {
+      // Append root object
+      appendPrototypeNode(link, ['prototype'], 'root-object');
+      continue;
     }
 
-    prototype = prototypeLink.object;
-
-    if (prototype === Object.prototype) {
+    if (link.object === Object.prototype) {
       // Reached the end, which is Object.prototype
-      appendPrototypeNode(prototype, 'Object.prototype', ['prototype'], 'object-prototype');
+      appendPrototypeNode(link, ['prototype'], 'object-prototype');
       break;
     }
 
-    constructor = result.constructors.filter(prototypeIsContructorPrototype)[0];
+    let constructor =
+      result.constructors.filter(c => link.object === c.prototype)[0];
     if (constructor) {
       // This prototype is a constructor's prototype
-      appendPrototypeNode(constructor.prototype, constructor.name, ['constructor'], constructor.name, true);
+      appendPrototypeNode(link, ['constructor'], constructor.name, true);
     } else {
       // This prototype is just an object
-      appendPrototypeNode(prototype, prototype.id, ['prototype']);
+      appendPrototypeNode(link, ['prototype']);
     }
   }
 
   // Display all nodes; temporary hack using setTimeout and hardcoded delay
-  nodes = document.querySelectorAll('.output-div');
-  i = 0;
+  const nodes = document.querySelectorAll('.output-div');
+  let i = 0;
   setTimeout(function removeHidden() {
     if (i < nodes.length) {
       nodes[i].classList.remove('is-hidden');
@@ -78,15 +69,15 @@ function display(result) {
   }, 200);
 }
 
-function appendPrototypeNode(object, text, classList, id, isConstructor) {
-  var div = isConstructor ?
+function appendPrototypeNode(link, classList, id, isConstructor) {
+  const div = isConstructor ?
     getPrototypeNode(id + '.prototype', ['prototype', 'constructor-prototype']) :
-    getPrototypeNode(text, classList, id);
+    getPrototypeNode(link.name, classList, id);
 
   outputContent.appendChild(div);
 
   div.addEventListener('click', () => {
-    propertiesWindow.display(object);
+    propertiesWindow.display(link);
   })
 }
 

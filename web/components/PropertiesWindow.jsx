@@ -7,30 +7,23 @@ const classPropertyName = 'property-name';
 const PropertiesWindow = React.createClass({
   getInitialState() {
     return {
-      object: null
+      link: null
     }
   },
   clear() {
     this.setState(this.getInitialState());
   },
-  display(object) {
-    this.setState({ object });
+  display(link) {
+    this.setState({ link });
   },
   render() {
-    const object = this.state.object;
-    let properties = [];
-    if (object) {
-      properties = Object.getOwnPropertyNames(object);
-      if (object === Function.prototype) {
-        // Address issue: http://stackoverflow.com/questions/31921189/caller-and-arguments-are-restricted-function-properties-and-cannot-be-access
-        properties = properties.filter(p => p !== 'caller' && p !== 'arguments');
-      }
-    }
+    const link = this.state.link;
+    const properties = link ? link.getOwnPropertyNamesSafe() : [];
     return (
       <div>
         <ul>
           {properties.map(property => {
-            let propertyValue = object[property];
+            let propertyValue = link.object[property];
             propertyValue = propertyValue ? propertyValue.toString() : '';
             return (
               <li key={property}>
