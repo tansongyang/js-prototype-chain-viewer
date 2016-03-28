@@ -1,4 +1,4 @@
-import evaluateJS from '../lib/evaluate';
+import evaluateJS from '../src/evaluate';
 
 describe('evaluate', () => {
   describe('evaluateJS', () => {

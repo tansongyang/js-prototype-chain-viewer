@@ -1,6 +1,6 @@
 "use strict";
 
-import PrototypeChain from "../lib/PrototypeChain";
+import PrototypeChain from "../src/PrototypeChain";
 
 describe("PrototypeChain", () => {
   describe("constructor(object)", () => {

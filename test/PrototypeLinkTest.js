@@ -1,4 +1,4 @@
-import PrototypeLink from '../lib/PrototypeLink';
+import PrototypeLink from '../src/PrototypeLink';
 
 describe('PrototypeLink', () => {
   describe('constructor(object)', () => {

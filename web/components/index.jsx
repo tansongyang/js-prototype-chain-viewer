@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Editor from './Editor.jsx';
 import PropertiesWindow from './PropertiesWindow.jsx';
-import evaluateJS from '../../lib/evaluate';
+import evaluateJS from '../../src/evaluate';
 
 var outputContent, propertiesWindow;
 
