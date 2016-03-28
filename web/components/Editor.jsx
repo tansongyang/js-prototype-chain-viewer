@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import Codemirror from 'react-codemirror';
 // Used with CodeMirror

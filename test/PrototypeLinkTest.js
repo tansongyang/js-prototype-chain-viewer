@@ -1,5 +1,3 @@
-'use strict';
-
 import PrototypeLink from '../lib/PrototypeLink';
 
 describe('PrototypeLink', () => {

@@ -1,5 +1,3 @@
-'use strict';
-
 import evaluateJS from '../lib/evaluate';
 
 describe('evaluate', () => {
