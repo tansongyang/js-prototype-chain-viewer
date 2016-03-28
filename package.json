@@ -29,6 +29,12 @@
     "url": "https://github.com/tansongyang/js-prototype-chain-viewer/issues"
   },
   "homepage": "https://github.com/tansongyang/js-prototype-chain-viewer",
+  "dependencies": {
+    "codemirror": "^5.10.0",
+    "react": "^0.14.6",
+    "react-codemirror": "^0.2.5",
+    "react-dom": "^0.14.6",
+  },
   "devDependencies": {
     "babel": "^6.4.0",
     "babel-core": "^6.4.0",
@@ -39,7 +45,6 @@
     "babelify": "^7.2.0",
     "browserify": "^10.2.6",
     "chai": "^3.2.0",
-    "codemirror": "^5.10.0",
     "eslint": "^2.5.3",
     "eslint-config-airbnb": "^6.2.0",
     "eslint-plugin-react": "^4.2.3",
@@ -50,9 +55,6 @@
     "nodemon": "^1.8.1",
     "opener": "^1.4.1",
     "parallelshell": "^2.0.0",
-    "react": "^0.14.6",
-    "react-codemirror": "^0.2.5",
-    "react-dom": "^0.14.6",
     "rimraf": "^2.5.2",
     "watch": "^0.16.0"
   },
@@ -60,5 +62,8 @@
     "transform": [
       "babelify"
     ]
+  },
+  "dependencies": {
+    "redux": "^3.3.1"
   }
 }
